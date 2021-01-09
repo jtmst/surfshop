@@ -11,7 +11,7 @@ router.post('/', (req, res, next) => {
     res.send('CREATE /reviews')
 });
 
-/* GET reviews edit. /reviews//:review_id/edit. */
+/* GET reviews edit. /reviews/:review_id/edit. */
 router.get('/:id/edit', (req, res, next) => {
     res.send('EDIT  /posts/:id/reviews//:review_id/edit')
 });
