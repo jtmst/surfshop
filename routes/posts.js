@@ -1,7 +1,11 @@
 var express = require('express');
 var router = express.Router();
 const { errorHandler } = require('../middleware');
-const { getPosts, newPost } = require("../controllers/posts");
+const {
+    getPosts,
+    newPost,
+    createPost
+} = require("../controllers/posts");
 
 /* GET posts index. /posts. */
 router.get('/', errorHandler(getPosts));
@@ -15,9 +19,7 @@ router.post('/', (req, res, next) => {
 });
 
 /* GET posts show. /posts/:id. */
-router.get('/:id', (req, res, next) => {
-    res.send('SHOW /posts/:id')
-});
+router.get('/:id', errorHandler(createPost));
 
 /* GET posts edit. /posts/:id/edit. */
 router.get('/:id/edit', (req, res, next) => {
