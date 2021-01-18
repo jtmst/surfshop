@@ -4,7 +4,8 @@ const { errorHandler } = require('../middleware');
 const {
     getPosts,
     newPost,
-    createPost
+    createPost,
+    showPost
 } = require("../controllers/posts");
 
 /* GET posts index. /posts. */
@@ -14,12 +15,10 @@ router.get('/', errorHandler(getPosts));
 router.get('/new', newPost);
 
 /* POST posts create. /posts. */
-router.post('/', (req, res, next) => {
-    res.send('CREATE /posts')
-});
+router.post('/', errorHandler(createPost));
 
 /* GET posts show. /posts/:id. */
-router.get('/:id', errorHandler(createPost));
+router.get('/:id', errorHandler(showPost));
 
 /* GET posts edit. /posts/:id/edit. */
 router.get('/:id/edit', (req, res, next) => {
