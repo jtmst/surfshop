@@ -7,6 +7,7 @@ const passport = require('passport')
 const User = require('./models/user');
 const session = require('express-session')
 const mongoose = require('mongoose')
+const methodOveride = require('method-override')
 
 // Require routes
 var indexRouter = require('./routes/index');
@@ -31,6 +32,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOveride('_method'))
 
 // Configure passport and session
 app.use(session({
